@@ -3,7 +3,7 @@ angular.module("dbService",[])
 	this.getData = function(){
 	return $http ({
    	  method: "get",
-   	  url: "../controlers/bendovi.json"
+   	  url: "../controllers/bendovi.json"
 
        })
 	}
