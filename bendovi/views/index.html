@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="bendovi">
+<head>
+	<title>Rok bendovi</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <script src="../moduls/app.js"></script>
+    <script src="../controllers/mainController.js"></script>
+    <script src="../services/dbservice.js"></script>
+    <style type="text/css">
+    	#foto{
+    		width: 100%;
+    	}
+    </style>
+</head>
+<body ng-controller="mainCtrl">
+    <nav class="navbar  navbar-default">
+    	<div class="container-fluid">
+    		<a href="" class="navbar-brand">ROK BENDOVI</a>
+    	</div><!-- container fuluid -->
+    </nav><!-- navbar default -->
+
+    <div class="container-fluid">
+    	<div class="row">
+    		<div class="col-md-8 col-md-offset-2">
+    			<div class="row">
+    				<div class="col-md-6" ng-repeat="bend in bendovi">
+    					<div class="panel panel-default">
+    						<div class="panel-heading">
+    						     <h3>{{bend.name}}</h3>
+    						</div><!-- panel heading -->
+    						<div class="panel-body">
+    							<div class="row">
+    								<dir class="col-md-6 ">
+    									<img ng-src="{{bend.img_url}}" class="img-responsive img-tumbnail">
+    								</dir><!-- ng6 -->
+    								<dir class="col-md-6">
+    									<p>{{bend.info.substring(0,200)}}...</p>
+    								</dir><!-- ng6 -->
+    							</div><!-- row -->
+    						</div><!-- body -->
+    						<div class="panel-footer text-right">
+    							<button class="btn btn-primary" ng-click="prikazi(bend)" data-toggle="modal" data-target="#myModal">Procitaj vise</button>
+    						</div><!-- footer -->
+    					</div>
+    				</div><!-- md 6 -->
+    			</div><!-- roow -->
+    		</div><!-- md- 8 -->
+    	</div><!-- row -->
+    	<!-- **************************************************************************************************** -->
+    	<!-- skriveni kontejner u kojem suprikazani detalji -->
+    	<!-- **************************************************************************************************** -->
+    	<div class="row">
+    		<div class="col-md-8 col-md-offset-2">
+    			 <!-- Modal -->
+				<div id="myModal" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">{{detaljiBend.name}}</h4>
+				        <div class="row">
+				            <!-- SLIKE -->
+				        	<div class="col-md-4">
+				        		<img ng-src="{{detaljiBend.thumb1}}" class="img-responsive img-tumbnail">
+				        	</div><!-- md 4 -->
+				        	<div class="col-md-4">
+				        		<img ng-src="{{detaljiBend.thumb2}}" class="img-responsive img-tumbnail">
+				        	</div><!-- md 4 -->
+				        	<div class="col-md-4">
+				        		<img ng-src="{{detaljiBend.thumb3}}" class="img-responsive img-tumbnail">
+				        	</div><!-- md 4 -->
+				 
+				        </div><!-- row -->
+
+				      </div>
+				      <div class="modal-body">
+				        <p>{{detaljiBend.info}}</p>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
+				      </div>
+				    </div>
+
+				  </div>
+				</div>
+    		</div><!-- col md 8 offset -->
+    	</div> <!-- row -->
+    	<!-- **************************************************************************************************** -->
+    </div><!-- container fuluid -->
+
+</body>
+</html>
